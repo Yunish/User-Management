@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 require("dotenv").config();
 
@@ -14,8 +16,13 @@ const {
   checkPasswordMatch,
 } = require("./controller/passwordController");
 const { login, fetchToken } = require("./controller/loginController");
+const swaggerOptions = require("./utils/swagger/options");
 
 const app = express();
+
+// Setup Swagger
+const specs = swaggerJsdoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(express.json());
 app.use(cors());
