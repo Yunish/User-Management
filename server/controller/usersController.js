@@ -130,6 +130,7 @@ const updateUser = async (req, res) => {
 };
 
 const getUsers = async (req, res) => {
+  console.log(req.userId);
   try {
     const userList = await userModel.find();
     res.status(200).json(generateResponse(userList, 200));

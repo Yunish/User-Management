@@ -13,7 +13,7 @@ const {
   forgotPassword,
   checkPasswordMatch,
 } = require("./controller/passwordController");
-const login = require("./controller/loginController");
+const { login, fetchToken } = require("./controller/loginController");
 
 const app = express();
 
@@ -24,6 +24,7 @@ app.use(cors());
 app.use("/api/v1/user", userRoutes);
 
 app.post("/api/v1/login", login);
+app.post("/api/v1/fetch-token", fetchToken);
 app.post("/api/v1/sendEmail", checkEmail);
 app.get("/api/v1/generate-password", randomPasswordGenerator);
 app.post("/api/v1/encrypt-password", encryptPasswordGenerator);
