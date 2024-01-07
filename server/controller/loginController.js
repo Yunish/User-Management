@@ -7,7 +7,7 @@ const generateAccessToken = async (userDetails) => {
   const access_token = jwt.sign(
     { email: userDetails.email, id: userDetails._id },
     process.env.TOKEN_SECRET_KEY,
-    { expiresIn: "30s" }
+    { expiresIn: "10m" }
   );
   return access_token;
 };
@@ -16,7 +16,7 @@ const generateRefreshToken = async (userDetails) => {
   const refresh_token = jwt.sign(
     { email: userDetails.email, id: userDetails._id },
     process.env.TOKEN_SECRET_KEY,
-    { expiresIn: "5m" }
+    { expiresIn: "1d" }
   );
   return refresh_token;
 };

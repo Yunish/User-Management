@@ -134,7 +134,7 @@ const getUsers = async (req, res) => {
     const userList = await userModel.find();
     res.status(200).json(generateResponse(userList, 200));
   } catch (err) {
-    res.status(500).json(generateResponse(err, 500));
+    res.status(500).json(generateResponse(null, 500));
   }
 };
 
@@ -144,7 +144,7 @@ const getUser = async (req, res) => {
     const userList = await userModel.findById(id);
     res.status(200).json(generateResponse(userList, 200));
   } catch (err) {
-    res.status(500).json(generateResponse(err, 500));
+    res.status(500).json(generateResponse(null, 500));
   }
 };
 
@@ -154,7 +154,7 @@ const deleteUser = async (req, res) => {
     const userList = await userModel.findByIdAndDelete(id);
     res.status(200).json(generateResponse(userList, 200));
   } catch (err) {
-    res.status(500).json(generateResponse(err, 500));
+    res.status(500).json(generateResponse(null, 500));
   }
 };
 

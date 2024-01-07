@@ -1,23 +1,12 @@
-const generateStatus = (status) => {
-  if (status === 200) {
-    return true;
-  }
-  return false;
-};
-
-const generateMessage = (status) => {
-  if (status === 200) {
-    return "Successfully performed operation!!!";
-  } else if (status === 500) {
-    return "Server Error!!!";
-  }
-  return "Failed to perform operation!!!";
-};
+const {
+  getResponseMessageByStatusCode,
+  SUCCESS_STATUS_CODES,
+} = require("./httpStatusCodes");
 
 const generateResponse = (resData, resStatus) => {
   const data = resData;
-  const status = generateStatus(resStatus);
-  const message = generateMessage(resStatus);
+  const status = SUCCESS_STATUS_CODES.includes(resStatus) ? true : false;
+  const message = getResponseMessageByStatusCode(resStatus);
   return {
     data,
     status,

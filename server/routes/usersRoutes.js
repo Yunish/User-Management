@@ -6,7 +6,7 @@ const {
   getUser,
   updateUser,
 } = require("../controller/usersController");
-const auth = require("../middlewares/auth");
+const { auth } = require("../middlewares/auth");
 
 const router = express.Router();
 

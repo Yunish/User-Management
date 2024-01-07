@@ -17,6 +17,8 @@ const {
 } = require("./controller/passwordController");
 const { login, fetchToken } = require("./controller/loginController");
 const swaggerOptions = require("./utils/swagger/options");
+const initController = require("./controller/initController");
+const { auth, logout } = require("./middlewares/auth");
 
 const app = express();
 
@@ -31,6 +33,8 @@ app.use(cors());
 app.use("/api/v1/user", userRoutes);
 
 app.post("/api/v1/login", login);
+app.get("/api/v1/logout", logout);
+app.get("/api/v1/init", auth, initController);
 app.post("/api/v1/fetch-token", fetchToken);
 app.post("/api/v1/sendEmail", checkEmail);
 app.get("/api/v1/generate-password", randomPasswordGenerator);
